@@ -62,6 +62,11 @@ case "$distro" in
 esac
 
 #
+# install bpytop
+#
+$SUDO pip3 install bpytop --upgrade
+
+#
 # install tldr
 #
 $SUDO npm install -g --unsafe-perm tldr

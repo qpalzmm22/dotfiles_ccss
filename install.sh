@@ -28,7 +28,7 @@ case "$distro" in
     if ! type bat 2>/dev/null; then
         DEBFILE="bat.deb"
         #VERSION=`curl -s https://github.com/sharkdp/bat/releases/latest | cut -d '"' -f 2 | cut -d '/' -f 8`
-       	VERSION=v0.21.0
+       	VERSION=v0.18.0
 	    wget -q -O $DEBFILE https://github.com/sharkdp/bat/releases/download/$VERSION/bat_${VERSION:1}_amd64.deb
         $SUDO dpkg -i $DEBFILE
     fi

@@ -19,32 +19,37 @@ case "$distro" in
     # install fd
     if ! type fd 2>/dev/null; then
         ZIPFILE="fd.deb"
-        VERSION=`curl -s https://github.com/sharkdp/fd/releases/latest | cut -d '"' -f 2 | cut -d '/' -f 8`
+        #VERSION=`curl -s https://github.com/sharkdp/fd/releases/latest | cut -d '"' -f 2 | cut -d '/' -f 8`
+	    VERSION=v8.4.0
         wget -q -O $ZIPFILE https://github.com/sharkdp/fd/releases/download/$VERSION/fd_${VERSION:1}_amd64.deb
         $SUDO dpkg -i $ZIPFILE
     fi
     # install bat
     if ! type bat 2>/dev/null; then
         DEBFILE="bat.deb"
-        VERSION=`curl -s https://github.com/sharkdp/bat/releases/latest | cut -d '"' -f 2 | cut -d '/' -f 8`
-        wget -q -O $DEBFILE https://github.com/sharkdp/bat/releases/download/$VERSION/bat_${VERSION:1}_amd64.deb
+        #VERSION=`curl -s https://github.com/sharkdp/bat/releases/latest | cut -d '"' -f 2 | cut -d '/' -f 8`
+       	VERSION=v0.21.0
+	    wget -q -O $DEBFILE https://github.com/sharkdp/bat/releases/download/$VERSION/bat_${VERSION:1}_amd64.deb
         $SUDO dpkg -i $DEBFILE
     fi
     if ! type lsd 2>/dev/null; then
         DEBFILE="lsd.deb"
-        VERSION=`curl -s https://github.com/Peltoche/lsd/releases/latest | cut -d '"' -f 2 | cut -d '/' -f 8`
+        #VERSION=`curl -s https://github.com/Peltoche/lsd/releases/latest | cut -d '"' -f 2 | cut -d '/' -f 8`
+	    VERSION=0.22.0 
         wget -q -O $DEBFILE https://github.com/Peltoche/lsd/releases/download/$VERSION/lsd_${VERSION}_amd64.deb
         $SUDO dpkg -i $DEBFILE
     fi
     if ! type hexyl 2>/dev/null; then
         DEBFILE="hexyl.deb"
-        VERSION=`curl -s https://github.com/sharkdp/hexyl/releases/latest | cut -d '"' -f 2 | cut -d '/' -f 8`
+        #VERSION=`curl -s https://github.com/sharkdp/hexyl/releases/latest | cut -d '"' -f 2 | cut -d '/' -f 8`
+	    VERSION=v0.10.0
         wget -O $DEBFILE https://github.com/sharkdp/hexyl/releases/download/$VERSION/hexyl_${VERSION:1}_amd64.deb
         $SUDO dpkg -i $DEBFILE
     fi
     if ! type fzf 2>/dev/null; then
         TGZFILE="fzf.tgz"
-        VERSION=`curl -s https://github.com/junegunn/fzf-bin/releases/latest | cut -d '"' -f 2 | cut -d '/' -f 8`
+        #VERSION=`curl -s https://github.com/junegunn/fzf-bin/releases/latest | cut -d '"' -f 2 | cut -d '/' -f 8`
+	    VERSION=0.23.1
         wget -O $TGZFILE https://github.com/junegunn/fzf-bin/releases/download/$VERSION/fzf-${VERSION}-linux_amd64.tgz
         tar xf $TGZFILE
         $SUDO mv fzf /usr/local/bin/
@@ -69,7 +74,9 @@ $SUDO pip3 install bpytop --upgrade
 #
 # install tldr
 #
-$SUDO npm install -g --unsafe-perm tldr
+
+# npm -> apt-get
+$SUDO apt-get install -y tldr
 
 #
 # install oh-my-zsh
